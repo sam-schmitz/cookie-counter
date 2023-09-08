@@ -1,0 +1,10 @@
+make a counter for cookies
+	make a display and a counter
+	add setting cookie
+		will store the current count
+	add get cookie
+	add accept cookies button
+add cookie graphics
+	big cookie by the current count
+	tab name and picture
+	change background color
