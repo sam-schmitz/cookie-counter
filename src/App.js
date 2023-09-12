@@ -11,7 +11,8 @@ function App() {
     if (prev !== undefined) {
         console.log(prev);
         cookies.remove('cook');
-        setCount(prev)
+        console.log('removed');
+        setCount(prev);
     }
 
     let incrementCount = () => {
