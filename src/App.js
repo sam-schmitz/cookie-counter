@@ -10,7 +10,7 @@ function App() {
     const prev = cookies.get('cook');
     if (prev !== undefined) {
         console.log(prev);
-        cookies.remove('cook');
+        cookies.remove('cook', { path: '/' });
         console.log('removed');
         setCount(prev);
     }
