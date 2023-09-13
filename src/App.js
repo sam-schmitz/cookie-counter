@@ -11,40 +11,39 @@ function App() {
     if (prev !== undefined) {
         console.log(prev);
         cookies.remove('cook', { path: '/' });
-        console.log('removed');
+        console.log('removed cook');
         setCount(prev);
     }
 
     let incrementCount = () => {
         setCount(count + 1);
-        console.log(count)
+        console.log("count:", count);
     };
 
     let decrementCount = () => {
         if (count < 5) return false;
         setCount(count - 5);
+        console.log('count:', count)
     };
 
     let resetCount = () => {
         setCount(0);
+        console.log('count:', count);
     }
 
     let save = () => {
         cookies.set('cook', count);
         console.log("cookies:", cookies.get('cook'));
     }
-
+    
     useEffect(() => {
-        console.log('useEffect setup triggered')
 
         const handleTabClose = event => {
             event.preventDefault();
 
-            console.log('beforeunload event triggered')
-            /*console.log('cookies', count)
-            //set the cookie
+            console.log('beforeunload event triggered');
             cookies.set('cook', count);
-            console.log(cookies.get('cook'));*/
+            console.log('cook:', cookies.get('cook'));
             return (event.returnValue = 'saving');
         };
 
@@ -53,7 +52,7 @@ function App() {
         return () => {
             window.removeEventListener('beforeunload', handleTabClose);
         };
-    }, []);
+    }, [count, cookies]);
 
     return (
         <div class="container-fluid bg-dark p-3 min-vh-100">
