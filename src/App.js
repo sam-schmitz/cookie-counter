@@ -3,6 +3,8 @@ import './App.css';
 import Cookies from 'universal-cookie';
 import React, { useState} from 'react';
 import { useEffect } from 'react';
+import cookieImage from './Images/cookie-47942.png';
+import monsterImage from './Images/monster-icon-png-2714.png';
 
 function App() {
     const [count, setCount] = useState(0);
@@ -60,10 +62,10 @@ function App() {
                 <h2>Cookie Counter</h2>
                 <div class="col-sm-6">
                     <button
-                        class="btn btn-light me-1 my-1"
+                        class="btn me-1 my-1"
                         onClick={incrementCount}
                     >
-                        cookie
+                        <img src={cookieImage} alt="cookie" class="img-thumbnail" />
                     </button>
                     <h5>Cookies: {count}</h5>
                     <button
@@ -75,12 +77,12 @@ function App() {
                 </div>
                 <div class="col-sm-6">
                     <button
-                        class="btn btn-light me-1 my-1"
+                        class="btn me-1 my-1"
                         onClick={decrementCount}
                     >
-                        mouse
+                        <img src={monsterImage} alt="monster" class="img-thumbnail" />
                     </button>
-                    <h5>the mouse takes 5 cookies</h5>
+                    <h5>the monster takes 5 cookies</h5>
                     <button
                         class="btn btn-light me-1 my-1"
                         onClick={save}
