@@ -1,3 +1,52 @@
+.img-cookie {
+    max-height: 250px;
+    object-fit: contain;
+}
+
+.img-cookie[squeeze='1'] {
+    animation: img-cookie-stretch 1s 1;
+}
+
+.img-cookie[squeeze='2']{
+    animation: img-cookie-squeeze 1s 1;
+}
+
+@keyframes img-cookie-squeeze {
+    50% {
+        transform: scale(.8, .8)
+    }
+    100% {
+        transform: scale(1, 1)
+    }
+}
+
+@keyframes img-cookie-stretch {
+    50% {
+        transform: scale(1.25, 1.25)
+    }
+    100% {
+        transform: scale(1, 1)
+    }
+}
+
+.img-monster {
+    max-height: 250px;
+    object-fit: fill;
+}
+
+.img-monster[spin='1'] {
+    animation: img-monster-spin 1s 1;
+}
+
+@keyframes img-monster-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .App {
   text-align: center;
 }

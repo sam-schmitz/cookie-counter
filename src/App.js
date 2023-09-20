@@ -8,6 +8,9 @@ import monsterImage from './Images/monster-icon-png-2714.png';
 
 function App() {
     const [count, setCount] = useState(0);
+    const [spin, setSpin] = useState(0);
+    const [squeeze, setSqueeze] = useState(0);
+
     const cookies = new Cookies(null, { path: '/' });
     const prev = cookies.get('cook');
     if (prev !== undefined) {
@@ -31,11 +34,18 @@ function App() {
     let resetCount = () => {
         setCount(0);
         console.log('count:', count);
+        setSqueeze(2);
     }
 
     let save = () => {
         cookies.set('cook', count);
         console.log("cookies:", cookies.get('cook'));
+    }
+
+    let monsterSpin = () => {
+        if (count < 5) return false;
+        setSpin(1);
+        setSqueeze(2);
     }
     
     useEffect(() => {
@@ -65,7 +75,15 @@ function App() {
                         class="btn me-1 my-1"
                         onClick={incrementCount}
                     >
-                        <img src={cookieImage} alt="cookie" class="img-thumbnail" />
+                        <img
+                            className="img-cookie"
+                            src={cookieImage}
+                            alt="cookie"
+                            onClick={() => setSqueeze(1)}
+                            onAnimationEnd={() => setSqueeze(0)}
+                            squeeze={squeeze}
+                            //make the cookie do something when pressed
+                        />
                     </button>
                     <h5>Cookies: {count}</h5>
                     <button
@@ -80,7 +98,15 @@ function App() {
                         class="btn me-1 my-1"
                         onClick={decrementCount}
                     >
-                        <img src={monsterImage} alt="monster" class="img-thumbnail" />
+                        <img
+                            className="img-monster"
+                            src={monsterImage}
+                            alt="monster"
+                            onClick={monsterSpin}
+                            onAnimationEnd={() => (setSpin(0))}
+                            spin={spin}
+                            //make the monster spin when clicked
+                        />
                     </button>
                     <h5>the monster takes 5 cookies</h5>
                     <button
